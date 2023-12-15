@@ -18,21 +18,30 @@ def recherche_mot_question(liste,directory):
             liste2.append(mot)
     return liste2
 
-def calcul_vecteur_tf_idf(question):
-    dico = {}
+def calcul_vecteur_tf_idf(question,matrice): #renvoie le vecteur sous forme de liste
     dico_idf = idf('cleaned')
     dico_tf = tf_texte(question)
-    liste1 = tokenisation(question)
-    liste2 = recherche_mot_question(liste1, 'cleaned')
-
-    for val in liste1:
-        if val in liste2 and val in dico_idf and val in dico_tf:
-            dico[val] = dico_idf[val] * dico_tf[val]
+    vecteur_question=[]
+    liste_question= question.split()
+    for i in range(1,len(matrice)):
+        if matrice[i][0] in liste_question:
+            tfidf=dico_tf[matrice[i][0]]*dico_idf[matrice[i][0]]
         else:
-            dico[val] = 0.0
-    return dico
+            tfidf= 0.0
+        vecteur_question.append(tfidf)
+    return vecteur_question
 
-
+def calcul_vecteur_tf_idf2(question,matrice): #renvoie le vecteur sous forme de dictionnaire UTILISER LA MATRICE TFIDF DU CORPUS
+    dico_idf = idf('cleaned')
+    dico_tf = tf_texte(question)
+    vecteur_question={}
+    liste_question = question.split()
+    for i in range(1,len(matrice)):
+        if matrice[i][0] in liste_question:
+            vecteur_question[matrice[i][0]]=dico_tf[matrice[i][0]]*dico_idf[matrice[i][0]]
+        else:
+            vecteur_question[matrice[i][0]]=0.0
+    return vecteur_question
 
 
 def produit_scalaire(A, B):
@@ -120,6 +129,19 @@ def sous_chaine(str1,str2):
         if mot == str1:
             return True
     return False
+    
+def document_pertinent(matriceTFIDF,vecteurTFIDF,liste_nom_fichier):#utilisé la transposée de la matrice TFIDF
+    max=0
+    doc=0
+    for i in range(1,len(matriceTFIDF)):
+        matrice1= matriceTFIDF[i][1:]
+        print(len(matrice1),len(vecteurTFIDF))
+        res= similarite(matrice1,vecteurTFIDF)
+        if res>max:
+            max = res
+            doc=i-1
+    return liste_nom_fichier[doc]
+    
 def ameliorer_reponse(question):
     question = tokenisation(question)
     premiere_phrase_trouvee = extraire_premiere_phrase_max_tf_idf(question)
