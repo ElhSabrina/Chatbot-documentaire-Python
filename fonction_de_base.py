@@ -88,41 +88,33 @@ def tf_texte(texte):
     return dico_occur
 
 def idf(directory):
-    fichiers = os.listdir(directory)
-    liste_dico = []
-    for nom in fichiers:
-        texte = ""
-        with open(os.path.join(directory, nom), "r", encoding='utf-8') as fichier:
-            for ligne in fichier:
-                texte += ligne
-            liste_dico.append(occur(texte))
+    fichiers= os.listdir(directory) # liste contenant le nom de tous les fichiers du repertoire directory
+    dico_idf ={} # futur dico idf
+    liste_texte=[]
+    liste_texte2=[]
+    nb=len(fichiers) # variable contenant le nombre de fichier du repertoire directory
+    print(nb,"nb")
+    for nom in fichiers: # parcourt fichier par par  fichier
+        with open(os.path.join(directory, nom), "r", encoding='utf-8') as fichier: # On ouvre le fichier en mode lecture
+            contenu = fichier.read() # chaine de caractere stockant le contenu d'un fichier
+            liste_mot = contenu.split() #liste contenant tous les mots du texte
+        liste_texte.append(liste_mot) # liste contenant des liste_mot
+    for liste in liste_texte:
+        nvliste=[]
+        for val in liste:
+            if val not in nvliste:
+                nvliste.append(val)
+        liste_texte2.append(nvliste)
 
-    liste_cle = []
-    for dico in liste_dico:
-        for cle in dico.keys():
-            liste_cle.append(cle)
-
-    ch_cle = ""
-    for mot in liste_cle:
-        ch_cle += mot + " "
-
-    dico_idf = {}  # création du dictionnaire idf
-    liste_chaine = ch_cle.split()
-    for mot in liste_chaine:
-        dico_idf[mot] = 0
-
-    for i in range(len(liste_chaine)):
-        oc = 0
-        for val in liste_chaine:
-            if liste_chaine[i] == val:
-                oc += 1
-        dico_idf[liste_chaine[i]] = oc
-
-    nb = len(liste_dico)
-    for cle, valeur in dico_idf.items():
-        nv_valeur = log(((nb / valeur) + 1), 10)
-        dico_idf[cle] = nv_valeur
-    return dico_idf
+    for liste in liste_texte2:
+        for mot in liste:
+            if mot not in dico_idf.keys():
+                dico_idf[mot] = 1
+            else:
+                dico_idf[mot]+=1
+    for key, value in dico_idf.items():
+        dico_idf[key]=log((nb/value), 10)
+    return dico_idf 
 
 def transposee(matrice):
     result_matrix = []
