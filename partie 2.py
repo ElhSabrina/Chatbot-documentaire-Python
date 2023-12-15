@@ -17,11 +17,7 @@ def recherche_mot_question(liste,directory):
         if mot in contenu_global:
             liste2.append(mot)
     return liste2
-res= transposee(matrice_tf_idf('cleaned'))
-for elem in res:
-    for val in elem:
-        print(val, end="\t")
-    print()
+
 def calcul_vecteur_tf_idf(question):
     dico = {}
     dico_idf = idf('cleaned')
