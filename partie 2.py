@@ -122,13 +122,13 @@ def extraire_premiere_phrase_max_tf_idf(question):
 
     return premiere_phrase_trouvee
 
-def sous_chaine(str1,str2):
-    str1= tokenisation(str1)
-    str2=tokenisation(str2)
-    for mot in mots_str2:
-        if mot == str1:
-            return True
-    return False
+def sous_chaine(str1, str2):
+    token_str1 = tokenisation(str1)
+    token_str2 = tokenisation(str2)
+    for elem in token_str1:
+        if elem not in token_str2:
+            return False
+    return True
     
 def document_pertinent(matriceTFIDF,vecteurTFIDF,liste_nom_fichier):#utilisé la transposée de la matrice TFIDF
     max=0
