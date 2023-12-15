@@ -338,7 +338,6 @@ if __name__ == '__main__':
         3.Afficher le(s) mot(s) le(s) plus répété(s) par le président Chirac. \n
         4.Afficher le(s) nom(s) du (des) président(s) qui a (ont) parlé de la "Nation" et celui qui l'a répété le plus de fois. \n
         5.Afficher le premier président à parler du climat et/ou de l'écologie \n
-        6.Afficher le(s) mot(s) que tous les présidents ont évoqués \n""")
 
         choix = input("Entrez votre choix:") #Variable nous indiqaunt quelle fonction l'utilisateur souhaite utiliser
         liste_choix=['1','2','3','4','5','6','7'] #Liste des choix possible
@@ -380,9 +379,6 @@ if __name__ == '__main__':
             print(ecologie('cleaned'))
             go = input("Voulez-vous tester une autre fonctionnalité? Taper o pour oui ou n pour non: ")
 
-        elif choix == '6':
-            print("Cette fonctionnalité est encore en cours de développement, merci d'en choisir une autre:")
-            go=input()
     print("Vous avez quittez le programme. Merci de votre visite")
 
 
