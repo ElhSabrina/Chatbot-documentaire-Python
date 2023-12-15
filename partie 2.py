@@ -89,7 +89,7 @@ def mots_tf_idf_eleves(question):
 
     return mots_max
 #test
-print(calcul_vecteur_tf_idf("hi guys la ecologie belle comment je suis sabrina"))
+print(calcul_vecteur_tf_idf(""))
 print(produit_scalaire([1,2],[3,4]))
 print(norme_vecteur([1,2,3]))
 print(similarite([1,2,3],[3,4,5]))
