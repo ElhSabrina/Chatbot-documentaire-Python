@@ -18,6 +18,14 @@ def recherche_mot_question(liste,directory):
             liste2.append(mot)
     return liste2
 
+def vrai_t(matrice):
+    nouvelle_matrice = [ligne[1:] for ligne in matrice[1:]]
+    return(transposee(nouvelle_matrice))
+
+def vrai(matrice):
+    nouvelle_matrice = [ligne[1:] for ligne in matrice[1:]]
+    return (nouvelle_matrice)
+
 def calcul_vecteur_tf_idf(question,matrice): #renvoie le vecteur sous forme de liste
     dico_idf = idf('cleaned')
     dico_tf = tf_texte(question)
