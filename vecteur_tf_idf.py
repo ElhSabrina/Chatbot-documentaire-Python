@@ -2,7 +2,7 @@ from tf import *
 from idf import *
 from formatage_texte import *
 from tokenisation import *
-def calcul_vecteur_tf_idf(question,matrice): #renvoie le vecteur sous forme de liste
+def calcul_vecteur_tf_idf(question,matrice): #renvoie le vecteur sous forme de liste 
     """Cette fonction prend en paramètre la question et la matriceTFIDF du répertoire et renvoie le vecteur TF_IDF
     de la question sous forme de liste. On note que l'ordre des TF_IDF correspond à l'ordre de ceux de la matrice"""
     dico_idf = idf('cleaned') # Dictionnaire contenant l'IDF des mots du répetoire cleaned
