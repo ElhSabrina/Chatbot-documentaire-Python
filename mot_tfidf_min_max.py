@@ -1,9 +1,9 @@
 from matrice_tf_idf import *
 
 
-def mot_tf_idf_min(directory):
+def mot_tf_idf_min(repertoire):
     """Cette fonction prend en paramètre un répertoire et renvoie les mots ayant le TF_IDF le plus petit"""
-    matrice = matrice_tf_idf(directory) # Matrice contenant le tf-idf de directory
+    matrice = matrice_tf_idf(repertoire) # Matrice contenant le tf-idf du repertoire
     dico_moy_idf = {}
     liste_mot=[]
     for i in range(1, len(matrice)): # On parcourt les sous listes de la matrice à partir de la deuxième (la première contient les noms)
@@ -26,11 +26,11 @@ def mot_tf_idf_min(directory):
     return liste_mot_moins_important
 
 
-def mot_tf_idf_max(directory):
+def mot_tf_idf_max(repertoire):
     """Cette fonction prend en paramètre un répertoire et renvoie le(s) mot(s) ayant le score TF-IDF le plus important.
     Il se base sur le même pricipe que la fonction précdente en faisant la moyenne des scores TF-IDF de chaque mot
     et renvoie le(s) mot(s) ayant la moyenne la plus élevé."""
-    matrice = matrice_tf_idf(directory)# Matrice contenant le tf-idf de directory
+    matrice = matrice_tf_idf(repertoire)# Matrice contenant le tf-idf dur repertoire
     dico_moy_idf = {}
     liste_mot=[]
     for i in range(1, len(matrice)):
