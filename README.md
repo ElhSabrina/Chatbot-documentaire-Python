@@ -74,7 +74,7 @@ mots_repetes_chirac(list_of_files('cleaned')
 president_nation(): ne prend rien en paramètre et renvoie une liste;
 
 ecologie(directory): Cette fontion prend en paramètre un répertoire du type cleaned et retourne une chaine de caractère
-content le nom du premier président à parler d'écologie.
+contenant le nom du premier président à parler d'écologie.
 On peut l'appeler en faisant :
 ecologie('cleaned')
 
