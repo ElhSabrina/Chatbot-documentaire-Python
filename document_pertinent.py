@@ -20,7 +20,6 @@ def document_pertinent(matriceTFIDF, vecteurTFIDF, liste_nom_fichier):  # utilis
 
 
 
-
         
 
 
