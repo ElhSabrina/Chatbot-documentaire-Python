@@ -1,13 +1,16 @@
-def idf(directory):
+import os
+from math import *
+
+def idf(repertoire):
     """Cette fonction prend en paramètre un répertoire de fichier et renvoie le dictionnaire associant à chaque mot
     son idf"""
-    fichiers= os.listdir(directory)
+    fichiers= os.listdir(repertoire)
     dico_idf ={}
     liste_texte=[]
     liste_texte2=[]
     nb=len(fichiers)
     for nom in fichiers: # Parcourt fichier par fichier
-        with open(os.path.join(directory, nom), "r", encoding='utf-8') as fichier: # On ouvre le fichier en mode lecture
+        with open(os.path.join(repertoire, nom), "r", encoding='utf-8') as fichier: # On ouvre le fichier en mode lecture
             contenu = fichier.read()
             liste_mot = contenu.split() # Liste contenant tous les mots du texte
         liste_texte.append(liste_mot) # Liste contenant toutes les liste_mot
@@ -27,6 +30,6 @@ def idf(directory):
                 dico_idf[mot] = 1 #On crée une paire clé/valeur avec comme clé le mot et en valeur 1
             else:
                 dico_idf[mot]+=1 # On incrément la valeur de la clé de 1
-    for key, value in dico_idf.items():
-        dico_idf[key]=log((nb/value), 10) # On associe à chaque clé (mot) son idf
+    for cle, valeur in dico_idf.items():
+        dico_idf[cle]=log((nb/valeur), 10) # On associe à chaque clé (mot) son idf
     return dico_idf
