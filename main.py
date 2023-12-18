@@ -6,8 +6,8 @@ import os
 
 if __name__ == '__main__':
 
-    directory = "./speeches"
-    files_names = list_of_files(directory, "txt")   #Liste contenant le nom de fichiers texte
+    repertoire = "./speeches"
+    liste_noms_fichiers = liste_fichier(repertoire, "txt")   #Liste contenant le nom de fichiers texte
     liste_noms = extraction_nom()   #Liste contenant le nom des président
     dico_noms_prenoms = noms_prenoms(liste_noms) #Dictionnaire associant à chaque nom de président son prénom
 
@@ -15,13 +15,12 @@ if __name__ == '__main__':
         os.mkdir('cleaned')  # création du dossier 'cleaned'
 
     cleaned_dir = './cleaned'
-    for nom in files_names:
+    for nom in liste_noms_fichiers:
         nv_fichier = os.path.join(cleaned_dir, nom) #Création d'un nouveau fichier dans le repertoire cleaned
-        with open(os.path.join(directory, nom), "r") as speeches, open(nv_fichier, "w") as cleaned_fichier:
+        with open(os.path.join(repertoire, nom), "r") as speeches, open(nv_fichier, "w") as cleaned_fichier:
             for ligne in speeches:
                 nv_ligne = conversion_car(ligne) #Conversion des caracteres spéciaux
                 cleaned_fichier.write(nv_ligne)
-
     print("Bienvenue dans My First ChatBot!",'\n')
     go = 'o' #Cette variable va servir à l'utilisateur de pouvoir tester plusieurs fonctionnalité sans relancer le programme
     while go == 'o':
@@ -64,7 +63,7 @@ if __name__ == '__main__':
 
             elif choix2 == '3':
                 print("Le(s) mot(s) le(s) plus répété(s) par le président Chirac sont:")
-                res=mots_repetes_chirac(files_names)
+                res=mots_repetes_chirac(liste_noms_fichiers)
                 for val in res:
                     print(val)
                 go = input("Voulez-vous tester une autre fonctionnalité? Taper o pour oui ou n pour non: ")
