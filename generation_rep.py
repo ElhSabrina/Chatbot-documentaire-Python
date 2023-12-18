@@ -26,7 +26,7 @@ def sous_chaine(str1, str2):
 def extraire_premiere_phrase_max_tf_idf(question):
     matrice_cleaned = matrice_tf_idf('cleaned')
     vecteur_question = calcul_vecteur_tf_idf(question, matrice_cleaned)
-    doc = document_pertinent(matrice_cleaned,vecteur_question,list_of_files('cleaned',"txt"))
+    doc = document_pertinent(matrice_cleaned,vecteur_question,liste_fichier('cleaned',"txt"))
     mots_max_tf_idf = mots_tf_idf_eleves(question)
     premiere_phrase_trouvee = None
     phrases=[]
@@ -36,8 +36,8 @@ def extraire_premiere_phrase_max_tf_idf(question):
     mot_point = mots_max_tf_idf +"." # Stock le mot petinent suivie d'un point
     mot_maj = chr(ord(mots_max_tf_idf[0])-32)+mots_max_tf_idf[1:] # Stock le mot petinent commencant par une majuscule
 
-    with open(f"speeches/{doc}", "r", encoding='utf-8') as file: #On ouvre le document pertinent
-        contenu = file.read()
+    with open(f"speeches/{doc}", "r", encoding='utf-8') as f: #On ouvre le document pertinent
+        contenu = f.read()
         for car in contenu:
             if car != '\n' and car != "\"": # Si ce n'est pas un saut de ligne ou un slash
                 contenu_brut += car
@@ -60,16 +60,16 @@ def ameliorer_reponse(question):
     vecteur_tf_idf = calcul_vecteur_tf_idf(question,matrice=matrice_tf_idf('cleaned'))
     premiere_phrase_trouvee = extraire_premiere_phrase_max_tf_idf(question)
 
-    question_starters = {
+    question_debuts = {
         "Comment": "Après analyse, ",
         "Pourquoi": "Car, ",
         "Peux-tu": "Oui, bien sûr!"
 
     }
     mot_cle = question1[0]
-    for elem in question_starters.keys():
+    for elem in question_debuts.keys():
         if sous_chaine(mot_cle, elem) or sous_chaine(elem, mot_cle):
-            premiere_phrase_trouvee = question_starters[elem] + premiere_phrase_trouvee
+            premiere_phrase_trouvee = question_debuts[elem] + premiere_phrase_trouvee
             break  # dés qu'il y a une clé qui correspond au premier mot du dico on stoppe la boucle
 
     return premiere_phrase_trouvee
