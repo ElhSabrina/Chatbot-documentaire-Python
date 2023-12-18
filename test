@@ -1,7 +1,0 @@
-def occurence_mot(texte):
-    liste_texte= list(texte)
-    liste_sans_doublon= list(set(liste(texte)))
-    liste_copier=[]
-    dico={}
-    for mot in texte:
-        f
