@@ -1,3 +1,6 @@
+from formatage_texte import *
+import os
+
 def tokenisation(question):
     """Cette fonction prend en paramètre une chaine de caractère et renvoie une liste contenant les mots de la
     question en majuscule et sans caractère spécail sous forme de liste"""
@@ -6,14 +9,14 @@ def tokenisation(question):
     return liste_mots
 
 
-def recherche_mot_question(liste, directory):
+def recherche_mot_question(liste, repertoire):
     """Cette fonction prend en paramètre une liste et un repertoire et renvoie une liste des termes présents à la fois
-     dans la liste est dans les fichiers du répértoires directory"""
-    fichiers = os.listdir(directory)
+     dans la liste est dans les fichiers du répértoires """
+    fichiers = os.listdir(repertoire)
     contenu_global = []
     liste_mot_commun = []
     for nom in fichiers: # On parcourt les fichiers un par un
-        with open(os.path.join(directory, nom), "r",encoding='utf-8') as fichier:
+        with open(os.path.join(repertoire, nom), "r",encoding='utf-8') as fichier:
             texte = fichier.read()
             list_texte = texte.split() # La liste_texte contient tous les mots du fichier
         contenu_global += list_texte # On ajoute chaque liste à une liste
