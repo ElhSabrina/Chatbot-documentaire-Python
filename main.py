@@ -71,7 +71,6 @@ if __name__ == '__main__':
 
             elif choix2 == '4':
                 print("Le(s) nom(s) du (des) président(s) qui a (ont) parlé de la 'Nation' et celui qui l'a répété le plus de fois est:")
-                print("Le premier président à parler de climat ou d'écologie est:")
                 res=president_nation()
                 for val in res:
                     print(val)
