@@ -1,11 +1,11 @@
 from tf import *
 from formatage_texte import *
-import os 
+import os
 
-def mots_repetes_chirac(files_names: list):
+def mots_repetes_chirac(liste_noms_fichiers: list):
     """Cette fonction prend en paramètre une liste de fichier est renvoie le(s) mot(s) le(s) plus répété(s) par
     le président Jacques Chirac"""
-    liste_fichier_chirac = [file for file in files_names if "Chirac" in file]# Filtrer les fichiers qui contiennent "Chirac" dans leur nom
+    liste_fichier_chirac = [fichier for fichier in liste_noms_fichiers if "Chirac" in fichier]# Filtrer les fichiers qui contiennent "Chirac" dans leur nom
 
     # Initialiser une liste vide pour stocker les termes fréquents (TF) de chaque fichier
     liste_tf = []
@@ -14,11 +14,11 @@ def mots_repetes_chirac(files_names: list):
     tf_final = {}
 
     # Parcourir chaque fichier Chirac
-    for file in liste_fichier_chirac:
+    for fichier in liste_fichier_chirac:
         # Ouvrir le fichier en mode lecture
-        with open("cleaned\\" + file, "r", encoding="utf-8") as file:
+        with open("cleaned\\" + fichier, "r", encoding="utf-8") as fichier:
             # Lire les lignes du fichier et supprimer les caractères de nouvelle ligne
-            contenu = file.readlines()
+            contenu = fichier.readlines()
             contenu = [ligne[:-1] for ligne in contenu]
 
             # Concaténer toutes les lignes en une seule chaîne
@@ -51,9 +51,9 @@ def president_nation():
     presidents_avec_score_positif=[]
     presidents_avec_score_max=[]
     max_score=0
-    files_names = list_of_files('cleaned',"txt")
+    fichiers_noms = liste_fichier('cleaned',"txt")
     for i in range(len(liste_president)):
-        with open("cleaned\\" +files_names[i], "r", encoding="utf-8") as f:  #le chemin complet du fichier que vous souhaitez ouvrir
+        with open("cleaned\\" +fichiers_noms[i], "r", encoding="utf-8") as f:  #le chemin complet du fichier que vous souhaitez ouvrir
             contenu = f.readlines() #Chaque élément de la liste correspond à une ligne du fichier.
             nouveau_contenu = []  # Initialisation d'une nouvelle liste
 
@@ -100,13 +100,13 @@ def president_nation():
             return presidents_avec_score_max
 
 
-def ecologie(directory):
+def ecologie(repertoire):
     """Cette fonction prend en paramètre un répertoire de fichier texte et renvoie le nom du premier président ayant
     parler du climat ou de l'écologie"""
-    fichiers = os.listdir(directory) # Contient la liste des noms des fichiers du répertoire
+    fichiers = os.listdir(repertoire) # Contient la liste des noms des fichiers du répertoire
     liste_present=[]
     for nom in fichiers:
-        with open(os.path.join(directory, nom), "r", encoding='utf-8') as fichier :
+        with open(os.path.join(repertoire, nom), "r", encoding='utf-8') as fichier :
             texte= fichier.read()
             liste_mot= texte.split() # Liste contenant tous les mots de la variable texte
             for val in liste_mot:
@@ -115,3 +115,4 @@ def ecologie(directory):
     premier_president=liste_present[0] # Le premier fichier où on parle de climat où d'écologie et le premier de la liste
     premier_president = premier_president[11:-4] # On extrait le nom du président
     return premier_president
+
