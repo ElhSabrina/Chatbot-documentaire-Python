@@ -7,11 +7,13 @@ Le projet est actuellement terminé bien qu'il pourrait bénéficier de plusieur
 notamment dans la gestion de cas ou bien dans l'interface utilisateur.
 
 Voici toutes les fonctions utilisées dans notre projet ainsi que leur utilisation:
+Dans ce Read.Me on utilisera l'appelation : repertoire de type cleaned pour désigner un répertoire dont les fichiers
+textes sont tous en minuscule et sans caractère spécial
 
-list_of_files(directory,extension) : "directory" est le nom du répertoire où se trouve
+list_of_files(repertoire,extension) : "repertoire" est le nom du répertoire où se trouve
 les fichiers textes de départ, "extension" est le type d'extension des fichiers contenu
 dans le répertoire lorqu'on appelle la fonction on peut mettre l'extension "txt".
-La fonction retourne la liste des fichiers du répertoir directory.
+La fonction retourne la liste des fichiers du répertoire.
 Ainsi dans notre cas on peut appeler notre fonction en faisant:
 list_of_files("cleaned","txt")
 
@@ -43,7 +45,7 @@ tf("Nomination_Macron")
 tf_texte(texte): La fonction prend en paramètre une chaine de caractère et renvoie un dictionnaire associant
 à chaque mot (clé) son Tf (valeur).
 
-idf(directory): Cette fonction prend en paramètre un répetoire ici se sera toujours un réperoire
+idf(repertoire): Cette fonction prend en paramètre un répetoire ici se sera toujours un réperoire
 cleaned et retourne un dictionnaire associant à chaque mot son score IDF.
 On peut l'appeler en faisant:
 idf('cleaned')
@@ -51,30 +53,29 @@ idf('cleaned')
 transposee(matrice) : Cette fonction prend en paramètre une matrice soit liste 2D et renvoie la
 transposée de cette matrice donc une autre liste2D.
 
-matrice_tf_idf(directory): Cette fonction prend en paramètre un répertoire de type cleaned (formater)
+matrice_tf_idf(repertoire): Cette fonction prend en paramètre un répertoire de type cleaned (formater)
 et retourne une liste 2D correspond à la matrice TF_IDF du corpus.
 On peut l'appeler en faisant:
 matrice_tf_idf('cleaned')
 
-mot_tf_idf_min(directory) : Cette fontion prend en paramètre un répertoire du type cleaned et retourne une liste contenant
+mot_tf_idf_min(repertoire) : Cette fontion prend en paramètre un répertoire du type cleaned et retourne une liste contenant
 les mots ayant le tf_idf le moins élevé.
 On peut l'appeler en faisant :
 mot_tf_idf_min('cleaned')
 
-mot_tf_idf_max(directory): Cette fontion prend en paramètre un répertoire du type cleaned et retourne une liste contenant
+mot_tf_idf_max(repertoire): Cette fontion prend en paramètre un répertoire du type cleaned et retourne une liste contenant
 les mots ayant le tf_idf le plus élevé.
 On peut l'appeler en faisant:
 mot_tf_idf_max('cleaned')
 
-mots_repetes_chirac(files_names) : Cette fonction prend en paramètre une liste de noms de fichiers texte et retourne
-une liste de chaine de caractère.
+mots_repetes_chirac(fichier_noms)prend en paramètre une chaine de caractère.
 On peut l'appeler en faisant:
-mots_repetes_chirac(list_of_files('cleaned')
+mots_repetes_chirac(listes_fichiers('cleaned')
 
 president_nation(): ne prend rien en paramètre et renvoie une liste;
 
-ecologie(directory): Cette fontion prend en paramètre un répertoire du type cleaned et retourne une chaine de caractère
-contenant le nom du premier président à parler d'écologie.
+ecologie(repertoire): Cette fontion prend en paramètre un répertoire du type cleaned et retourne une chaine de caractère
+content le nom du premier président à parler d'écologie.
 On peut l'appeler en faisant :
 ecologie('cleaned')
 
@@ -93,7 +94,7 @@ caractère correspond à la liste des mots de la chaine de caratère mise en par
 On peut l'appeler en faisant:
 tokenisation("Fait-il beau aujourd'hui?")
 
-recherche_mot_question(liste,directory): Cette fonction prend en paramètre une liste correspondant à la liste de mot d'une
+recherche_mot_question(liste,repertoire): Cette fonction prend en paramètre une liste correspondant à la liste de mot d'une
 chaine de caractère et un répertoire du type cleaned. Elle renvoie une liste correspondant à la liste des mots en commun
 entre un phrase tokénisé et un répertoire de fichier texte.
 On peut l'utiliser en faisant:
