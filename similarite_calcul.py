@@ -27,3 +27,4 @@ def similarite(A, B):
     similarite = produit_scalaire_resultat / (norme_A * norme_B)
     return similarite
 
+
