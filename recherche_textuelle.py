@@ -1,6 +1,6 @@
 from tf import *
 from formatage_texte import *
-import os
+import os 
 
 def mots_repetes_chirac(files_names: list):
     """Cette fonction prend en paramètre une liste de fichier est renvoie le(s) mot(s) le(s) plus répété(s) par
