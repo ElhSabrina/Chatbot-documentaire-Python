@@ -2,7 +2,7 @@ from idf import *
 from tf import *
 from formatage_texte import *
 def transposee(matrice):
-    result_matrix = []
+    result_matrix = [] 
 
     for col in range(len(matrice[0])):
         line_matrix = []
