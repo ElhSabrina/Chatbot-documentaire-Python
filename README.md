@@ -1,4 +1,4 @@
-groupe A, Sabrina El hassani/ Lucy Gros
+groupe A, Sabrina El hassani/ Lucy Gros lien vers le rapport : file:///C:/Work/efrei%20L1/algorithmique/Chat%20Bot%20Python.pdf
 My First Chat Bot est un projet ayant pour but d'analyser des fichiers texte d'un répertoire.
 L'analyse effectué est à plusieurs niveau allant de la recherche automatique à la génération d'
 une réponse à la question d'un utlisateur.
